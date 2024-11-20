@@ -1,8 +1,14 @@
-# TODO Найдите количество книг, которое можно разместить на дискете
-lines_on_the_page = int(input("Введите количество строк на странице: "))
-Pages = int(input ("введите количество страниц в книге: "))
-symbols = int(input("введите количество символов в строке: "))
-weigh_of_symbol = float(input ("Введите вес одного символа (в байтах): "))
-DiskVolume = float(input("Введите объём диска в Мб: "))
-DiskVolume=DiskVolume*(1024**2)
-print("на диске поместится "+ str(DiskVolume//(Pages * lines_on_the_page * symbols * weigh_of_symbol))+" книг")
+# TODO решите задачу
+
+import json
+from pprint import pprint
+
+def task()-> float: # нужно score*weight
+  summ=0
+  with open('input.json', 'r') as json_file:
+    data = json.load(json_file)
+    #pprint(data)
+    for txt in data: #создали цикл, который будет работать построчно
+      summ+= (txt['score']*txt['weight'])
+  return round(summ,3)
+print(task())
